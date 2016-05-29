@@ -23,23 +23,21 @@ class InteresantClient
     }
     
     /**
-     * 
-     * @return 
+     * @param Interesant $interesant 
+     * @return Form\Select
      */
-    public function getSelectInteresant()
+    public function getSelectInteresant($interesant)
     {
         $select = new \Itav\Component\Form\Select();
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://interesant.dev/form', [
-
-        ]);
+        $res = $client->get('http://interesant.dev/form');
         
         if ($res->getStatusCode() == 200){
         
-            $json = $res->getBody();
+            $json = $res->getBody()->read(1024000);
             $serializer = new \Itav\Component\Serializer\Serializer();
             $serializer->unserialize($json, \Itav\Component\Form\Select::class, $select);
         }
         return $select;
-    }    
+    }  
 }

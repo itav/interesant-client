@@ -1,0 +1,18 @@
+{
+    "name": "itav/interesant-client",
+    "authors": [
+        {
+            "name": "Sylwester Kowalski",
+            "email": "sylwester7799@gmail.com"
+        }
+    ],    
+    "require": {
+
+
+    },
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "src/"
+        }
+    }
+}

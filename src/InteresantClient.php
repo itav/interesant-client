@@ -62,5 +62,25 @@ class InteresantClient
             $serializer->unserialize($json, Interesant::class, $interesant);
         }
         return $interesant;
-    }    
+    }
+
+    /**
+     * @param Interesant $interesant 
+     * @return bool
+     */
+    public function saveInteresant($interesant)
+    {
+        $serializer = new \Itav\Component\Serializer\Serializer();
+        $client = new \GuzzleHttp\Client();
+        $res = $client->post("http://interesant.dev/add", [
+            'interesant' => [
+                $serializer->normalize($interesant)
+            ]
+        ]);
+        
+        if ($res->getStatusCode() == 200){
+            return true;
+        }
+        return false;
+    }
 }

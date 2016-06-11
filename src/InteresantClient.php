@@ -71,11 +71,11 @@ class InteresantClient
     public function saveInteresant($interesant)
     {
         $serializer = new \Itav\Component\Serializer\Serializer();
+        $params['interesant'] = $serializer->normalize($interesant);
         $client = new \GuzzleHttp\Client();
         $res = $client->post("http://interesant.dev/add", [
-            'interesant' => [
-                $serializer->normalize($interesant)
-            ]
+            'form_params' => $params
+            
         ]);
         
         if ($res->getStatusCode() == 200){

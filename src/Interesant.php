@@ -22,6 +22,7 @@ class Interesant
      */
     private $addresses;
     private $ten;
+    private $bankAccount;
     private $status;
 
     public function __construct()
@@ -142,5 +143,17 @@ class Interesant
         $this->status = $status;
         return $this;
     }
+
+    public function getBankAccount()
+    {
+        return $this->bankAccount;
+    }
+
+    public function setBankAccount($bankAccount)
+    {
+        $this->bankAccount = $bankAccount;
+        return $this;
+    }
+
 
 }
